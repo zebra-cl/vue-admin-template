@@ -1,0 +1,2 @@
+flask-appbuilder==3.4.*
+markupsafe==1.*
