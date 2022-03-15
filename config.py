@@ -1,10 +1,10 @@
 import os
 from flask_appbuilder.security.manager import (
-    AUTH_OID,
-    AUTH_REMOTE_USER,
-    AUTH_DB,
-    AUTH_LDAP,
-    AUTH_OAUTH,
+  AUTH_OID,
+  AUTH_REMOTE_USER,
+  AUTH_DB,
+  AUTH_LDAP,
+  AUTH_OAUTH,
 )
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -69,14 +69,14 @@ BABEL_DEFAULT_LOCALE = "en"
 BABEL_DEFAULT_FOLDER = "translations"
 # The allowed translation for you app
 LANGUAGES = {
-    "en": {"flag": "gb", "name": "English"},
-    "pt": {"flag": "pt", "name": "Portuguese"},
-    "pt_BR": {"flag": "br", "name": "Pt Brazil"},
-    "es": {"flag": "es", "name": "Spanish"},
-    "de": {"flag": "de", "name": "German"},
-    "zh": {"flag": "cn", "name": "Chinese"},
-    "ru": {"flag": "ru", "name": "Russian"},
-    "pl": {"flag": "pl", "name": "Polish"},
+  "en": {"flag": "gb", "name": "English"},
+  "pt": {"flag": "pt", "name": "Portuguese"},
+  "pt_BR": {"flag": "br", "name": "Pt Brazil"},
+  "es": {"flag": "es", "name": "Spanish"},
+  "de": {"flag": "de", "name": "German"},
+  "zh": {"flag": "cn", "name": "Chinese"},
+  "ru": {"flag": "ru", "name": "Russian"},
+  "pl": {"flag": "pl", "name": "Polish"},
 }
 # ---------------------------------------------------
 # Image and file configuration
@@ -108,3 +108,7 @@ IMG_UPLOAD_URL = "/static/uploads/"
 # APP_THEME = "spacelab.css"
 # APP_THEME = "united.css"
 # APP_THEME = "yeti.css"
+
+# JWT
+JWT_TOKEN_LOCATION = ('headers', 'query_string')
+JWT_QUERY_STRING_NAME = "token"

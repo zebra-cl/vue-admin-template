@@ -1,8 +1,10 @@
 import logging
 import os
 
-from flask import Flask, send_file
+from flask import Flask, send_file, redirect
 from flask_appbuilder import AppBuilder, SQLA, expose, IndexView
+
+from .security import SecurityApiEx
 
 """
  Logging configuration
@@ -22,8 +24,13 @@ class _IndexView(IndexView):
   def index(self):
     return send_file(os.path.join(os.path.dirname(__file__), '../dist/index.html'))
 
+  @expose("/admin")
+  def admin(self):
+    return redirect('/users/userinfo/')
+
 
 appbuilder = AppBuilder(app, db.session, indexview=_IndexView)
+appbuilder.add_api(SecurityApiEx)
 
 """
 from sqlalchemy.engine import Engine
