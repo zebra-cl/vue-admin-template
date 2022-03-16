@@ -1,5 +1,4 @@
-[vue-admin-template](https://github.com/PanJiaChen/vue-admin-template)
-+  [flask-appbuilder](https://github.com/dpgaspar/Flask-AppBuilder)
+[vue-admin-template](https://github.com/PanJiaChen/vue-admin-template) + [flask-appbuilder](https://github.com/dpgaspar/Flask-AppBuilder)
 
 ---
 
