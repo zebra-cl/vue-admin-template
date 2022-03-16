@@ -108,7 +108,3 @@ IMG_UPLOAD_URL = "/static/uploads/"
 # APP_THEME = "spacelab.css"
 # APP_THEME = "united.css"
 # APP_THEME = "yeti.css"
-
-# JWT
-JWT_TOKEN_LOCATION = ('headers', 'query_string')
-JWT_QUERY_STRING_NAME = "token"

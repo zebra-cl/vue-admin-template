@@ -3,6 +3,7 @@ import os
 
 from flask import Flask, send_file, redirect
 from flask_appbuilder import AppBuilder, SQLA, expose, IndexView
+from flask_cors import CORS
 
 from .security import SecurityApiEx
 
@@ -14,7 +15,7 @@ logging.basicConfig(format="%(asctime)s:%(levelname)s:%(name)s:%(message)s")
 logging.getLogger().setLevel(logging.DEBUG)
 
 app = Flask(__name__, static_folder='../dist/static')
-
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 app.config.from_object("config")
 db = SQLA(app)
 
