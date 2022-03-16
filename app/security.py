@@ -1,7 +1,6 @@
 from flask import Response
 from flask_appbuilder.api import expose, safe
 from flask_appbuilder.security.api import SecurityApi
-from flask_appbuilder.security.decorators import protect
 from flask_jwt_extended import jwt_required, current_user
 from marshmallow import Schema, fields
 
@@ -29,7 +28,7 @@ class SecurityApiEx(SecurityApi):
             return resp
 
     @expose("/userinfo", methods=["GET"])
-    @protect()
+    @jwt_required
     @safe
     def userinfo(self):
         class _Schema(Schema):
