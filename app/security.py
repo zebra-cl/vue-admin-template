@@ -13,15 +13,19 @@ class SecurityApiEx(SecurityApi):
 
   @expose("/login/ex", methods=["POST"])
   def login(self) -> Response:
-    _json = super().login().json
-    _json["token"] = _json.pop('access_token')
-    return make_json_resp(_json)
+    resp = super().login()
+    if 'access_token' in resp.json:
+      return make_json_resp({'token': resp.json['access_token']})
+    else:
+      return resp
 
   @expose("/refresh/ex", methods=["POST"])
   def refresh(self) -> Response:
-    _json = super().refresh().json
-    _json["token"] = _json.pop('access_token')
-    return make_json_resp(_json)
+    resp = super().refresh()
+    if 'access_token' in resp.json:
+      return make_json_resp({'token': resp.json['access_token']})
+    else:
+      return resp
 
   @expose("/userinfo", methods=["GET"])
   @jwt_required
