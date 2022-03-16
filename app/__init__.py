@@ -21,13 +21,13 @@ db = SQLA(app)
 
 
 class _IndexView(IndexView):
-  @expose("/")
-  def index(self):
-    return send_file(os.path.join(os.path.dirname(__file__), '../dist/index.html'))
+    @expose("/")
+    def index(self):
+        return send_file(os.path.join(os.path.dirname(__file__), '../dist/index.html'))
 
-  @expose("/admin")
-  def admin(self):
-    return redirect('/users/userinfo/')
+    @expose("/admin")
+    def admin(self):
+        return redirect('/users/userinfo/')
 
 
 appbuilder = AppBuilder(app, db.session, indexview=_IndexView)
