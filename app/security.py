@@ -9,9 +9,9 @@ from app.utils import make_json_resp
 
 class SecurityApiEx(SecurityApi):
   resource_name = 'security'
-  csrf_exempt = True
+  version = "v2"
 
-  @expose("/login/ex", methods=["POST"])
+  @expose("/login", methods=["POST"])
   def login(self) -> Response:
     resp = super().login()
     if 'access_token' in resp.json:
@@ -19,7 +19,7 @@ class SecurityApiEx(SecurityApi):
     else:
       return resp
 
-  @expose("/refresh/ex", methods=["POST"])
+  @expose("/refresh", methods=["POST"])
   def refresh(self) -> Response:
     resp = super().refresh()
     if 'access_token' in resp.json:
