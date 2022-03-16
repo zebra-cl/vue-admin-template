@@ -13,18 +13,22 @@ class SecurityApiEx(SecurityApi):
 
   @expose("/login/ex", methods=["POST"])
   def login(self) -> Response:
-    return make_json_resp(super().login().json)
+    _json = super().login().json
+    _json["token"] = _json.pop('access_token')
+    return make_json_resp(_json)
 
   @expose("/refresh/ex", methods=["POST"])
   def refresh(self) -> Response:
-    return make_json_resp(super().refresh().json)
+    _json = super().refresh().json
+    _json["token"] = _json.pop('access_token')
+    return make_json_resp(_json)
 
   @expose("/userinfo", methods=["GET"])
   @jwt_required
   @safe
   def userinfo(self):
     class _Schema(Schema):
-      username = fields.String()
+      username = fields.String(attribute='name')
       avatar = fields.String(
         default='https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif')
       roles = fields.List(fields.String())
