@@ -1,3 +1,4 @@
 flask-appbuilder==3.4.*
 markupsafe==1.*
 flask-cors==3.0.10
+gunicorn; sys_platform == 'linux'
