@@ -1,6 +1,10 @@
-from flask_appbuilder import Model
-from sqlalchemy import Column, Integer, String, ForeignKey
+from flask import current_app
+from flask_appbuilder import Model, SQLA
+from sqlalchemy import *
 from sqlalchemy.orm import relationship
+from werkzeug.local import LocalProxy
+
+db: SQLA = LocalProxy(lambda: current_app.extensions['sqlalchemy'].db)
 
 """
 
