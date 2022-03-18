@@ -1,3 +1,5 @@
+from collections import Iterable
+
 from flask import jsonify
 
 from flask_sqlalchemy import Pagination
@@ -32,6 +34,9 @@ def make_json_resp(
                 code=code
             )
         else:
-            return jsonify(data=schema.dump(data, many=True), code=code)
+            if isinstance(data, Iterable):
+                return jsonify(data=schema.dump(data, many=True), code=code)
+            else:
+                return jsonify(data=schema.dump(data), code=code)
 
     return jsonify(data=data, code=code)
